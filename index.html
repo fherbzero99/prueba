@@ -1,0 +1,68 @@
+<html lang="es"><head>
+<title>test API MAX/USA/MX/BR</title>
+<meta name="robots" content="noindex"> 
+<script src="js/clappr.min.js"></script> 
+<script src="js/mux.min.js"></script> 
+<script src="js/level-selector.min.js"></script> 
+<script src="js/clappr-pip.min.js"></script> 
+<script src="js/clappr-playback-rate-plugin.min.js"></script> 
+<script src="js/shaka-player.compiled.min.js"></script> 
+<script src="js/dash-shaka-playback.external.min.js"></script> 
+<script src="//cdn.jsdelivr.net/npm/cdnbye-shaka@latest"></script> 
+<script src="js/jquery.min.js"></script>  
+<script type="text/javascript" src="https://todopelotatvhd.com/z-7440630"></script>
+
+<style>  
+.player-poster[data-poster] { 
+  background-size: cover; 
+} 
+body{ 
+  margin:0; 
+  padding:0; 
+} 
+</style> 
+</head> 
+<body>
+<div id="player"></div> 
+<script> 
+var player = new Clappr.Player({ 
+        source: 'https://cf.live.latam.prd.media.max.com/live/lo/use1/f8843d7c-8506-47d7-bb17-29a82460d019-dash-6hdvr-cenc/master.mpd', 
+        mimeType: 'application/dash+xml', 
+        height: '100%', 
+        width: '100%', 
+        poster: 'https://images.cdn.prd.api.discomax.com/2024/04/04/dfa70259-5d68-3f94-8387-5a0bd3a0879a.jpeg',
+        plugins: [
+            LevelSelector, 
+            DashShakaPlayback, 
+            ClapprPip.PipButton, 
+            ClapprPip.PipPlugin, 
+            Clappr.MediaControl,
+            Clappr.Poster
+        ], 
+        events: {
+            onReady: function() {
+                var plugin = this.getPlugin('click_to_pause'); 
+                plugin && plugin.disable();
+            },
+        }, 
+        chromecast: { 
+            appId: '#', 
+            contentType: 'video/mp4', 
+        }, 
+        shakaConfiguration: { 
+            drm: { 
+             clearKeys: { 
+              "0100c8d88c8d97cc258af107971ed036": "d2a4e4c10c911a49e5cb8aca422cd305",
+              "010174cedc0fbf62cce622e0f2438207": "dc0c4a8d3d8ad1105e21943b2941edb1",
+              "01026969e2f6f50f49c08581948a04cc": "65df2723cdb3dd250163e36447b7dc0f"
+                    } 
+            }, 
+            preferredAudioLanguage: 'pt-BR', 
+        }, 
+        shakaOnBeforeLoad: function (shaka_player) {}, 
+        parentId: '#player' 
+    }); 
+</script>
+
+
+</body></html>
